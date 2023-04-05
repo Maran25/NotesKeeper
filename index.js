@@ -12,7 +12,8 @@ const { auth } = require("./middlewear/auth");
 
 
 app.use(cors({
-  origin: process.env.DOMAIN_NAME,
+  // origin: process.env.DOMAIN_NAME,
+  origin: "http://127.0.0.1:5173",
   credentials: true
 }));
 app.use(cookieParser());

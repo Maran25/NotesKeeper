@@ -11,7 +11,7 @@ const register = async (req, res) => {
   let isNewUser;
 
   try {
-    isNewUser = await User.findOne({ email });
+    isNewUser = await User.findOne({ email }).maxTimeMS(20000);
   } catch (error) {
     return res.json({ error: error.message });
   }
@@ -47,7 +47,7 @@ const login = async (req, res) => {
   let isExistingUser;
 
   try {
-    isExistingUser = await User.findOne({ email });
+    isExistingUser = await User.findOne({ email }).maxTimeMS(20000);
     console.log(isExistingUser);
   } catch (error) {
     return res.status(401).json({ error: "Unable to find existing user" });
