@@ -32,7 +32,7 @@ const register = async (req, res) => {
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "3h" });
-  res.cookie("token", token, { httpOnly: true, maxAge: 10800000, domain: '127.0.0.1:5173' });
+  res.cookie("token", token, { httpOnly: true, maxAge: 10800000 });  // REMOVED DOMAIN NAME
 
   return res.status(200).json({ token, ...payload });
 };
