@@ -12,7 +12,7 @@ const { auth } = require("./middlewear/auth");
 
 
 app.use(cors({
-  origin: "https://notekeepers.netlify.app/",
+  origin: "https://notekeepers.netlify.app",
   credentials: true
 }));
 app.use(cookieParser());
