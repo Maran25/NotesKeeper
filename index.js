@@ -1,6 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
 dotenv.config();
@@ -8,6 +9,12 @@ dotenv.config();
 const userRoute = require("./routes/userRoutes");
 const noteRoute = require("./routes/noteRoutes");
 const { auth } = require("./middlewear/auth");
+
+
+app.use(cors({
+  origin: "https://notekeepers.netlify.app",
+  credentials: true
+}));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -21,4 +28,3 @@ mongoose
   .then(app.listen(PORT, () => console.log(`listening on port ${PORT}`)))
   .then(console.log("Connected to Database"))
   .catch((err) => console.error(err.message));
-
